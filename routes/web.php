@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*route::get('/contact/{name}/{id}',function($name,$id){
+echo "Bonjour"." ".$name." ".$id;
+});*/
+
+/*route::get('/contact/{name}',function($name){
+echo "Bonjour"." ".$name;
+})->where('name','[0-9]+');*/
+
+route::get('/contact/{name}/{id}','TestController@Testdata');
