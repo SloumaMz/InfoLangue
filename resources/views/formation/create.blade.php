@@ -3,9 +3,10 @@
 @section('content')
 
 
-<div class="container">
+<div class="div col-md-12 col-md-offset-2">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
+			<a href="{{url('/formation/create')}}" type="submit" class="btn btn-primary col-md-offset-11">Ajouter</a>
 			<table class="table">
 			<thead>
 				<tr>
@@ -13,6 +14,7 @@
 				<th> Description </th>
 				<th> Créé le </th>
 				<th> Modifier le </th>
+				<th> Action </th>
 			</tr>
 			</thead>
 			<tbody>
@@ -22,6 +24,12 @@
 					<td> {{$f->description}}</td>
 					<td> {{$f->created_at}}</td>
 					<td> {{$f->updated_at}}</td>
+					<td>
+						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-primary col-md-offset-11">Consulter</a>
+						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-success col-md-offset-11">Modifier</a>
+						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-danger col-md-offset-11">Supprimer</a>
+
+					</td> 
 				</tr>
 				@endforeach
 			</tbody>
@@ -29,6 +37,7 @@
 			</table>
 		</div>
 	</div>
+	{{$slim->links()}}
 </div>
 
 

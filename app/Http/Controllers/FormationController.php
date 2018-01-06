@@ -16,7 +16,7 @@ class FormationController extends Controller
     //Index : Lister tous les éléments
     public function index()
     {
-        $f=Formation::all();
+        $f=Formation::paginate(5);
         return view ('formation.create',['slim'=>$f]);
     }
 
@@ -29,7 +29,7 @@ class FormationController extends Controller
     // Create : Afficher le formulaire de création
     public function create()
     {
-        //
+        return view('formation.creationForm');
     }
 
     /**

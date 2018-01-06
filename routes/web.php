@@ -17,5 +17,7 @@ Route::get('/',function () {
 Auth::routes();
 route::get('/home','HomeController@index')->name('home');
 route::get('/formation','FormationController@index');
+route::get('/formation/create','FormationController@create');
+
 
 ?>
