@@ -15,9 +15,10 @@ Route::get('/',function () {
 });
 
 Auth::routes();
-route::get('/home','HomeController@index')->name('home');
-route::get('/formation','FormationController@index');
-route::get('/formation/create','FormationController@create');
-
-
+Route::get('/home','HomeController@index')->name('home');
+Route::get('/formation','FormationController@index');
+Route::get('/formation/create','FormationController@create');
+Route::post('/formation','FormationController@store');
+Route::get('/formation/{id}/edit','FormationController@edit');
+Route::put('/{id}','FormationController@update');
 ?>

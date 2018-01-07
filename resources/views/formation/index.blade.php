@@ -25,10 +25,9 @@
 					<td> {{$f->created_at}}</td>
 					<td> {{$f->updated_at}}</td>
 					<td>
-						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-primary col-md-offset-11">Consulter</a>
-						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-success col-md-offset-11">Modifier</a>
-						<a href="{{url('/formation/create')}}" type="submit" class="btn btn-danger col-md-offset-11">Supprimer</a>
-
+						<a href="{{url('/formation/create')}}"  class="btn btn-primary">Consulter</a>
+						<a href="{{url('/formation/'.$f->id.'/edit')}}"  class="btn btn-success">Modifier</a>
+						<a href="{{url('/formation/create')}}"  class="btn btn-danger ">Supprimer</a>
 					</td> 
 				</tr>
 				@endforeach

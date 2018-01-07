@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Formation;
+use App\Http\Requests\formationrequest;
 
 class FormationController extends Controller
 {
@@ -17,7 +18,7 @@ class FormationController extends Controller
     public function index()
     {
         $f=Formation::paginate(5);
-        return view ('formation.create',['slim'=>$f]);
+        return view ('formation.index',['slim'=>$f]);
     }
 
     /**
@@ -42,7 +43,11 @@ class FormationController extends Controller
     //Store : Enregistrer les éléments du formulaire dans la BD
     public function store(Request $request)
     {
-        //
+        $xyz=new Formation();
+        $xyz->nom = $request->input('titre');
+        $xyz->description = $request->input('description');
+        $xyz->save();
+        return redirect('formation');
     }
 
     /**
@@ -66,7 +71,9 @@ class FormationController extends Controller
     //Edit : récupérer des données et les mettres dans le formulaire.
     public function edit($id)
     {
-        //
+       $xyz=Formation::find($id);
+       return view ('formation.edit',['abc'=>$xyz]);
+
     }
 
     /**
@@ -78,9 +85,13 @@ class FormationController extends Controller
      */
 
     //
-    public function update(Request $request, $id)
+    public function update(formationrequest $request, $id)
     {
-        //
+        $mz=Formation::find($id);
+        $mz->nom = $request->input('titre');
+        $mz->description = $request->input('description');
+        $mz->save();
+        return redirect('formation');
     }
 
     /**
