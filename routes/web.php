@@ -20,5 +20,9 @@ Route::get('/formation','FormationController@index');
 Route::get('/formation/create','FormationController@create');
 Route::post('/formation','FormationController@store');
 Route::get('/formation/{id}/edit','FormationController@edit');
-Route::put('/{id}','FormationController@update');
+Route::put('/formation/{id}','FormationController@update');
+Route::delete('/formation/{id}','FormationController@destroy');
+Route::get('/formation/{id}/edit','FormationController@edit');
+Route::get('/formation/{id}/show','FormationController@show');
+
 ?>

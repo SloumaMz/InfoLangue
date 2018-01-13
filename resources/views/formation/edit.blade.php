@@ -6,7 +6,8 @@
   <div>
 
 
-    <form action="{{url('/formation')}}" method='POST'>
+    <form action="{{url('/formation/'.$abc->id)}}" method='POST'>
+      <input type="hidden" name="_method" value="PUT">
       {{csrf_field()}}
   <div class="form-group">
     <label for="text">Titre</label>

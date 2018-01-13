@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Formation;
 use App\Http\Requests\formationrequest;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FormationController extends Controller
 {
@@ -50,6 +51,8 @@ class FormationController extends Controller
         return redirect('formation');
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -58,7 +61,8 @@ class FormationController extends Controller
      */
     public function show($id)
     {
-        //
+        $fs=Formation::find($id);
+        return view ('formation.show',['fff'=>$fs]);
     }
 
     /**
@@ -85,13 +89,13 @@ class FormationController extends Controller
      */
 
     //
-    public function update(formationrequest $request, $id)
+    public function update(Request $request, $id)
     {
         $mz=Formation::find($id);
         $mz->nom = $request->input('titre');
         $mz->description = $request->input('description');
         $mz->save();
-        return redirect('formation');
+        return redirect('/formation');
     }
 
     /**
@@ -104,6 +108,10 @@ class FormationController extends Controller
     //Suprimer des éléments de la base.
     public function destroy($id)
     {
-        //
+        $xml=Formation::find($id);
+        $xml->delete();
+        return redirect('/formation');
     }
+
+    
 }

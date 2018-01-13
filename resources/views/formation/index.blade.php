@@ -6,14 +6,12 @@
 <div class="div col-md-12 col-md-offset-2">
 	<div class="row">
 		<div class="col-md-8">
-			<a href="{{url('/formation/create')}}" type="submit" class="btn btn-primary col-md-offset-11">Ajouter</a>
+			<a href="{{url('/formation/create')}}" type="submit" class="btn btn-primary col-md-offset-8">Ajouter</a>
 			<table class="table">
 			<thead>
 				<tr>
 				<th> Titre</th>
 				<th> Description </th>
-				<th> Créé le </th>
-				<th> Modifier le </th>
 				<th> Action </th>
 			</tr>
 			</thead>
@@ -22,12 +20,16 @@
 				<tr>
 					<td> {{$f->nom}}</td>
 					<td> {{$f->description}}</td>
-					<td> {{$f->created_at}}</td>
-					<td> {{$f->updated_at}}</td>
 					<td>
-						<a href="{{url('/formation/create')}}"  class="btn btn-primary">Consulter</a>
+						
+						<form action="{{url('/formation/'.$f->id)}}" method="POST">
+							{{csrf_field()}}
+							{{ method_field('DELETE') }}
+						<a href="{{url('/formation/'.$f->id.'/show')}}"  class="btn btn-primary">Consulter</a>
 						<a href="{{url('/formation/'.$f->id.'/edit')}}"  class="btn btn-success">Modifier</a>
-						<a href="{{url('/formation/create')}}"  class="btn btn-danger ">Supprimer</a>
+						<button type="submit" class="btn btn-danger">supprimer</button>
+						</form>
+						
 					</td> 
 				</tr>
 				@endforeach
