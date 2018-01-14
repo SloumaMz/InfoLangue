@@ -42,13 +42,13 @@ class FormationController extends Controller
      */
 
     //Store : Enregistrer les éléments du formulaire dans la BD
-    public function store(Request $request)
+    public function store(formationrequest $request)
     {
         $xyz=new Formation();
-        $xyz->nom = $request->input('titre');
+        $xyz->nom = $request->input('nom');
         $xyz->description = $request->input('description');
         $xyz->save();
-        return redirect('formation');
+        return redirect('/formation');
     }
 
 
@@ -89,10 +89,10 @@ class FormationController extends Controller
      */
 
     //
-    public function update(Request $request, $id)
+    public function update(formationrequest $request, $id)
     {
         $mz=Formation::find($id);
-        $mz->nom = $request->input('titre');
+        $mz->nom = $request->input('nom');
         $mz->description = $request->input('description');
         $mz->save();
         return redirect('/formation');

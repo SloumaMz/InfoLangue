@@ -1,28 +1,59 @@
-@extends('layouts.app')
+
+@extends('layouts.app') 
 
 @section('content')
 
-<div class="div col-md-8 col-md-offset-2">
-  <div class="panel panel-primary">
+<div class="container table-responsive">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
 
+                
+                  <div class="panel-heading">Ajouter formation </div> 
+                    <div class="class pull-right">
+                      <a href="{{url('/formation')}}" class="btn btn-danger">x</a>
+                    </div>
+                
+               
+                    <div class="panel-body">
+                        <form action="{{url('/formation')}}" class="form-horizontal" method="POST">
+                            {{csrf_field()}}
+                            <div class="form-group  @if($errors->get('nom')) has-error @endif ">
+                                <label for="nom" class="col-md-2 control-label">Titre</label>
+                                    <div class="col-md-8"> 
+                                        <input type="text"  name="nom" role="form" class="form-control" value="{{old('nom')}}" required autofocus>
+                                    @if($errors->get('nom'))
+                                        @foreach($errors->get('nom') as $msg)
+                                                <li>{{$msg}}</li>
+                                        @endforeach
+                                    @endif
+                                    </div>
+                             </div>
+                             <div class="form-group ">
+                                <label for="description" class="col-md-2 control-label">Description</label>
+                                    <div class="col-md-8 "> 
+                                        <input type="text"  name="description" role="form" class="form-control" value="{{old('description')}}" required autofocus>
+                                    @if($errors->get('description'))
+                                    @foreach($errors->get('description') as $msg)
+                                    <li>{{$msg}}</li>
+                                    @endforeach
+                                    @endif
+                                    </div>                                   
+                            </div>
 
-    <form action="{{url('/formation')}}" method='POST'>
-      {{csrf_field()}}
-  <div class="form-group">
-    <label for="text">Titre</label>
-    <input type="text" class="form-control" name="titre" aria-describedby="emailHelp" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">description</label>
-    <input type="text" class="form-control" name='description' placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-    </form> 
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-8">
+                                    <button type="submit" class="btn btn-primary" value="Valider">Valider</button>
+                                </div>            
+                            </div>
 
-
-  </div>
-  
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>
+      
 
 
-@endsection
+@endsection('content')
